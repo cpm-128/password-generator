@@ -1,18 +1,3 @@
-# PAGE FUNCTIONALITY NOTES
-- click button. This calls a function that triggers the window.prompt
-- window.prompt: How many characters would you like your password to contain? 
-- capture the character length value in a variable
-- Validate this, password length must be at least 8 and no more than 128 characters (if/else loop). if false, bailout and restart
-- window.confirm: Click OK to include special characters. (T/F)
-- window.confirm: Click OK to include numeric characters. (T/F)
-- window.confirm: Click Ok to include uppercase characters. (T/F)
-- window.confirm: Click OK to include lowercase characters. (T/F)
-- four T/F (boolean) variables have now been captured.
-- need 4 different 'pools' or ARRAYS of things to draw from (special characters, numeric, upper, lower)
-- randomly picked out from the arrays based on window.confirm possibilities (ie, if not upper, need array of just special/number/lower). Radomly for loop through this and snatch characters from the array until the character length has been met.
-- Display password on page.
-
-
 # Password Generator Purpose
 Create an application that an employee can use to generate a random password based on criteria they’ve selected. This app will run in the browser and will feature dynamically updated HTML and CSS powered by JavaScript. It will have a clean and polished user interface that is responsive, ensuring that it adapts to multiple screen sizes.
 ## User Story
