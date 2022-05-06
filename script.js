@@ -1,29 +1,43 @@
 // Assignment code here
 
 // Define random generators using ASCII
-function getRandomUpper () {
-  return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
-};
 
-function getRandomLower () {
-  return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
-};
+// function getRandomUpper () {
+//   return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
+// };
 
-function getRandomNumber () {
-  return (Math.floor(Math.random() * 10));
-};
+// function getRandomLower () {
+//   return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+// };
 
-function getRandomSpecialCharacter () {
-  var specialCharacters = "!#$%&'()*+,-./:;<=>?@[]^_`{|}~"; // removed " and \ from specialCharacters for the sake of working.
-  return specialCharacters[Math.floor(Math.random() * specialCharacters.length)];
-};
+// function getRandomIndexgetRandomIndex () {
+//   return (Math.floor(Math.random() * 10));
+// };
 
-console.log(">>>randUpper>>>" , getRandomUpper());
-console.log(">>>randLower>>>" , getRandomLower());
-console.log(">>>randNumber>>>" , getRandomNumber());
-console.log(">>>randSpecialCharacter>>>" , getRandomSpecialCharacter());
+// function getRandomSpecialCharacter () {
+//   var specialCharacters = "!#$%&'()*+,-./:;<=>?@[]^_`{|}~"; // removed " and \ from specialCharacters for the sake of working.
+//   return specialCharacters[Math.floor(Math.random() * specialCharacters.length)];
+// };
+
+// console.log(">>>randUpper>>>" , getRandomUpper());
+// console.log(">>>randLower>>>" , getRandomLower());
+// console.log(">>>randNumber>>>" , getRandomIndexgetRandomIndex());
+// console.log(">>>randSpecialCharacter>>>" , getRandomSpecialCharacter());
 
 // End random generators using ASCII
+
+// Start Character Arrays
+
+var upperArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+var lowerArray = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+var numberArray = ["0" , "1" , "2" , "3" , "4" , "5" , "6" , "7" , "8" , "9"];
+var specialCharacterArray = [" " , "!" , "\"" , "#" , "$" , "%" , "&" , "'" , "(" , ")" , "*" , "+" , "," , "-" , "." , "/" , ":" , ";" , "<" , "=" , ">" , "?" , "@" , "[" , "\\" , "]" , "^" , "_" , "`" , "{" , "|" , "}" , "~"];
+// console.log(">>> upperArray >>>" , upperArray);
+// console.log(">>> lowerArray >>>" , lowerArray);
+// console.log(">>> numberArray >>>" , numberArray);
+// console.log(">>> specialCharacterArray >>>" , specialCharacterArray);
+
+// End Character Arrays
 
 // Prompt user for password criteria
 
@@ -68,37 +82,73 @@ wantsNumber();
 wantsSpecialCharacter();
   console.log(">>>Wants special characters?>>>" , wantsSpecialCharacter);
 
-
 // End prompt user for password criteria
 
-// FROM CLASS BELOW:
-// var possiblePassword = []; // you need an array based on what criteria the user selected
+// Create an array of possible password characters based on what criteria the user selected
 
-// var wantsUpper = prompt('Do you want lowercase?');
-//   if(wantsLower) {
-//     possiblePassword.push(upper) // PUSH IS EXTEMELY USEFUL. YOU ARE PUSHING EACH TYPE OF INPUT TO THE POSSIBLE PASSWORD POOL IF THEY SAID YES. DO THIS FOR EACH TYPE OF INPUT (PUSH OR DON'T PUSH)
-//   }
+var possiblePasswordCharactersArray = [];
 
-// var generatedPassword = [];
-//   for (var i; i < passwordLength; i++) {
-//   var randomPassword = Math.floor(Math.random() * possiblePassword.length);
-//   var etc
-//   generatedPassword.push(randomLetter);
-// }
+// End creation of possiblePasswordCharactersArray[]
 
+// Start push user selected criteria to array
 
+if (wantsUpper) {
+  possiblePasswordCharactersArray.push(upperArray)
+};
 
+if (wantsLower) {
+  possiblePasswordCharactersArray.push(lowerArray)
+};
 
+if (wantsNumber) {
+  possiblePasswordCharactersArray.push(numberArray)
+};
 
+if (wantsSpecialCharacter) {
+  possiblePasswordCharactersArray.push(specialCharacterArray)
+};
 
+if (!wantsUpper && !wantsLower && !wantsNumber && !wantsSpecialCharacter) {
+  window.alert("You must select at least one character type to include. Click 'OK' to start over.")
+  location.reload();
+};
 
+// End of pushing selected criteria to array
 
+// convert possiblePasswordCharactersArray into a string
 
+var possiblePasswordCharactersString = possiblePasswordCharactersArray.join();
+  console.log(">>>possible password characters string >>>" , possiblePasswordCharactersString);
 
+// End of converting possiblePasswordCharacter Array into possiblePasswordCharacterString
 
+// Start random generatePassword
 
+//store the generatedRandomCharacters
+var generatedRandomCharacters = [];
+
+function generatePassword() {
+  for (var i = 0; i < passwordLength; i++) {
+    var getRandomIndex = Math.floor(Math.random() * possiblePasswordCharactersString.length);
+    console.log(">>> getRandomIndex >>>" , getRandomIndex);
+    // this is getting us to a random INDEX in the string... we need to find that place
+    var randomCharacter = possiblePasswordCharactersString[getRandomIndex];
+    console.log(">>> randomCharacter >>>" , randomCharacter);
+    // store the randomly generated characters somewhere
+    generatedRandomCharacters.push(randomCharacter);
+    // convert the array of genereatedRandomCharacters to a string
+    generatedRandomCharacters.join();
+    console.log(">>> generatedRandomCharacters >>>" , generatedRandomCharacters.join());
+  };
+};
+
+generatePassword();
+
+// End random generatePassword
 
 // Assignment code ends here
+
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
