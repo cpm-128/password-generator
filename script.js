@@ -91,20 +91,21 @@ function generatePassword() {
 
   // Start push user selected criteria to array
 
+  /// use array.push(...array) with the 3... when pushing an array into an arry to avoid unecessary commas. This is called the spread operator.
   if (wantsUpper) {
-    possiblePasswordCharactersArray.push(upperArray)
+    possiblePasswordCharactersArray.push(...upperArray)
   };
 
   if (wantsLower) {
-    possiblePasswordCharactersArray.push(lowerArray)
+    possiblePasswordCharactersArray.push(...lowerArray)
   };
 
   if (wantsNumber) {
-    possiblePasswordCharactersArray.push(numberArray)
+    possiblePasswordCharactersArray.push(...numberArray)
   };
 
   if (wantsSpecialCharacter) {
-    possiblePasswordCharactersArray.push(specialCharacterArray)
+    possiblePasswordCharactersArray.push(...specialCharacterArray)
   };
 
   if (!wantsUpper && !wantsLower && !wantsNumber && !wantsSpecialCharacter) {
@@ -137,9 +138,8 @@ function generatePassword() {
       generatedRandomCharacters.push(randomCharacter);
       // convert the array of genereatedRandomCharacters to a string
       // BUG BELOW join is separating the characters by commas
-      generatedRandomCharacters.join('');
     };
-    return generatedRandomCharacters;
+    return generatedRandomCharacters.join('');
   // End random generatePasswor
 };
 // generatePassword();
