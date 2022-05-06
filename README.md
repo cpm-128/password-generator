@@ -45,8 +45,9 @@ WHEN the password is generated
 THEN the password is either displayed in an alert or written to the page
 
 ## Deployment
-- Repo URL:
+- Repo URL: https://github.com/cpm-128/password-generator
 
-- Site URL:
+- Site URL: https://cpm-128.github.io/password-generator/
 
 - Screenshot of application:
+![Screen Shot 2022-05-06 at 3 11 17 PM](https://user-images.githubusercontent.com/101371032/167202735-b97df72b-1f48-4e04-95c1-aabfb3a54443.png)
