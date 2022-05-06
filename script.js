@@ -136,9 +136,9 @@ function generatePassword() {
       generatedRandomCharacters.push(randomCharacter);
       // convert the array of genereatedRandomCharacters to a string
       generatedRandomCharacters.join();
-      console.log(">>> generatedRandomCharacters >>>" , generatedRandomCharacters.join());
     };
-  // End random generatePassword
+    return generatedRandomCharacters;
+  // End random generatePasswor
 };
 // generatePassword();
 
