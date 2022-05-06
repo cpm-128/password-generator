@@ -130,10 +130,10 @@ function generatePassword() {
 
     for (var i = 0; i < passwordLength; i++) {
       var getRandomIndex = Math.floor(Math.random() * possiblePasswordCharactersString.length);
-      console.log(">>> getRandomIndex >>>" , getRandomIndex);
+      // console.log(">>> getRandomIndex >>>" , getRandomIndex);
       // this is getting us to a random INDEX in the string... we need to find that place
       var randomCharacter = possiblePasswordCharactersString[getRandomIndex];
-      console.log(">>> randomCharacter >>>" , randomCharacter);
+      // console.log(">>> randomCharacter >>>" , randomCharacter);
       // store the randomly generated characters somewhere
       generatedRandomCharacters.push(randomCharacter);
       // convert the array of genereatedRandomCharacters to a string
