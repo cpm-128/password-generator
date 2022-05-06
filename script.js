@@ -116,7 +116,8 @@ function generatePassword() {
 
   // convert possiblePasswordCharactersArray into a string
 
-  var possiblePasswordCharactersString = possiblePasswordCharactersArray.join();
+  // BUG BELOW the string characters are all separated by commas which are being counted as characters of the string
+  var possiblePasswordCharactersString = possiblePasswordCharactersArray.join('');
     console.log(">>>possible password characters string >>>" , possiblePasswordCharactersString);
 
   // End of converting possiblePasswordCharacter Array into possiblePasswordCharacterString
@@ -135,7 +136,8 @@ function generatePassword() {
       // store the randomly generated characters somewhere
       generatedRandomCharacters.push(randomCharacter);
       // convert the array of genereatedRandomCharacters to a string
-      generatedRandomCharacters.join();
+      // BUG BELOW join is separating the characters by commas
+      generatedRandomCharacters.join('');
     };
     return generatedRandomCharacters;
   // End random generatePasswor
