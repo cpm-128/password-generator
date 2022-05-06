@@ -39,112 +39,108 @@ var specialCharacterArray = [" " , "!" , "\"" , "#" , "$" , "%" , "&" , "'" , "(
 
 // End Character Arrays
 
-// Prompt user for password criteria
-
-var passwordLength = function promptPasswordLength() {
-  var passwordLengthInput = window.prompt("How many characters would you like your password to contain?");
-    if (passwordLengthInput < 8 || passwordLengthInput > 128) {
-      window.alert("Password must be atleast 8 characters and less than 128 characters.");
-      promptPasswordLength();
-    } else {
-      passwordLength = passwordLengthInput;
-    };
-};
-
-var wantsUpper = function promptWantsUpper() {
-  var wantsUpperInput = window.confirm("Click OK to include uppercase letters.");
-  wantsUpper = wantsUpperInput;
-};
-
-var wantsLower = function promptWantsLower() {
-  var wantsLowerInput = window.confirm("Click OK to include lowercase letters.");
-  wantsLower = wantsLowerInput;
-};
-
-var wantsNumber = function promptWantsNumber() {
-  var wantsNumberInput = window.confirm("Click OK to include numbers.");
-  wantsNumber = wantsNumberInput;
-};
-
-var wantsSpecialCharacter = function promptWantsSpecialCharacter() {
-  var wantsSpecialCharacterInput = window.confirm("Click OK to include special characters.");
-  wantsSpecialCharacter = wantsSpecialCharacterInput;
-};
-
-passwordLength();
-  console.log(">>>passwordLength is>>>" , passwordLength);
-wantsUpper();
-  console.log(">>>Wants upper?>>>" , wantsUpper);
-wantsLower();
-  console.log(">>>Wants lower?>>>" , wantsLower);
-wantsNumber();
-  console.log(">>>Wants numbers?>>>" , wantsNumber);
-wantsSpecialCharacter();
-  console.log(">>>Wants special characters?>>>" , wantsSpecialCharacter);
-
-// End prompt user for password criteria
-
-// Create an array of possible password characters based on what criteria the user selected
-
-var possiblePasswordCharactersArray = [];
-
-// End creation of possiblePasswordCharactersArray[]
-
-// Start push user selected criteria to array
-
-if (wantsUpper) {
-  possiblePasswordCharactersArray.push(upperArray)
-};
-
-if (wantsLower) {
-  possiblePasswordCharactersArray.push(lowerArray)
-};
-
-if (wantsNumber) {
-  possiblePasswordCharactersArray.push(numberArray)
-};
-
-if (wantsSpecialCharacter) {
-  possiblePasswordCharactersArray.push(specialCharacterArray)
-};
-
-if (!wantsUpper && !wantsLower && !wantsNumber && !wantsSpecialCharacter) {
-  window.alert("You must select at least one character type to include. Click 'OK' to start over.")
-  location.reload();
-};
-
-// End of pushing selected criteria to array
-
-// convert possiblePasswordCharactersArray into a string
-
-var possiblePasswordCharactersString = possiblePasswordCharactersArray.join();
-  console.log(">>>possible password characters string >>>" , possiblePasswordCharactersString);
-
-// End of converting possiblePasswordCharacter Array into possiblePasswordCharacterString
-
-// Start random generatePassword
-
-//store the generatedRandomCharacters
-var generatedRandomCharacters = [];
-
+// Beging generatePassword function
 function generatePassword() {
-  for (var i = 0; i < passwordLength; i++) {
-    var getRandomIndex = Math.floor(Math.random() * possiblePasswordCharactersString.length);
-    console.log(">>> getRandomIndex >>>" , getRandomIndex);
-    // this is getting us to a random INDEX in the string... we need to find that place
-    var randomCharacter = possiblePasswordCharactersString[getRandomIndex];
-    console.log(">>> randomCharacter >>>" , randomCharacter);
-    // store the randomly generated characters somewhere
-    generatedRandomCharacters.push(randomCharacter);
-    // convert the array of genereatedRandomCharacters to a string
-    generatedRandomCharacters.join();
-    console.log(">>> generatedRandomCharacters >>>" , generatedRandomCharacters.join());
+
+  // Prompt user for password criteria
+  var passwordLength = function promptPasswordLength() {
+    var passwordLengthInput = window.prompt("How many characters would you like your password to contain?");
+      if (passwordLengthInput < 8 || passwordLengthInput > 128) {
+        window.alert("Password must be atleast 8 characters and less than 128 characters.");
+        promptPasswordLength();
+      } else {
+        passwordLength = passwordLengthInput;
+      };
   };
+
+  var wantsUpper = function promptWantsUpper() {
+    var wantsUpperInput = window.confirm("Click OK to include uppercase letters.");
+    wantsUpper = wantsUpperInput;
+  };
+
+  var wantsLower = function promptWantsLower() {
+    var wantsLowerInput = window.confirm("Click OK to include lowercase letters.");
+    wantsLower = wantsLowerInput;
+  };
+
+  var wantsNumber = function promptWantsNumber() {
+    var wantsNumberInput = window.confirm("Click OK to include numbers.");
+    wantsNumber = wantsNumberInput;
+  };
+
+  var wantsSpecialCharacter = function promptWantsSpecialCharacter() {
+    var wantsSpecialCharacterInput = window.confirm("Click OK to include special characters.");
+    wantsSpecialCharacter = wantsSpecialCharacterInput;
+  };
+
+  passwordLength();
+    console.log(">>>passwordLength is>>>" , passwordLength);
+  wantsUpper();
+    console.log(">>>Wants upper?>>>" , wantsUpper);
+  wantsLower();
+    console.log(">>>Wants lower?>>>" , wantsLower);
+  wantsNumber();
+    console.log(">>>Wants numbers?>>>" , wantsNumber);
+  wantsSpecialCharacter();
+    console.log(">>>Wants special characters?>>>" , wantsSpecialCharacter);
+
+  // End prompt user for password criteria
+
+  // Create an array of possible password characters based on what criteria the user selected
+  var possiblePasswordCharactersArray = [];
+
+  // Start push user selected criteria to array
+
+  if (wantsUpper) {
+    possiblePasswordCharactersArray.push(upperArray)
+  };
+
+  if (wantsLower) {
+    possiblePasswordCharactersArray.push(lowerArray)
+  };
+
+  if (wantsNumber) {
+    possiblePasswordCharactersArray.push(numberArray)
+  };
+
+  if (wantsSpecialCharacter) {
+    possiblePasswordCharactersArray.push(specialCharacterArray)
+  };
+
+  if (!wantsUpper && !wantsLower && !wantsNumber && !wantsSpecialCharacter) {
+    window.alert("You must select at least one character type to include. Click 'OK' to start over.")
+    location.reload();
+  };
+
+  // End of pushing selected criteria to array
+
+  // convert possiblePasswordCharactersArray into a string
+
+  var possiblePasswordCharactersString = possiblePasswordCharactersArray.join();
+    console.log(">>>possible password characters string >>>" , possiblePasswordCharactersString);
+
+  // End of converting possiblePasswordCharacter Array into possiblePasswordCharacterString
+
+  // Start random generatePassword
+
+  //store the generatedRandomCharacters
+  var generatedRandomCharacters = [];
+
+    for (var i = 0; i < passwordLength; i++) {
+      var getRandomIndex = Math.floor(Math.random() * possiblePasswordCharactersString.length);
+      console.log(">>> getRandomIndex >>>" , getRandomIndex);
+      // this is getting us to a random INDEX in the string... we need to find that place
+      var randomCharacter = possiblePasswordCharactersString[getRandomIndex];
+      console.log(">>> randomCharacter >>>" , randomCharacter);
+      // store the randomly generated characters somewhere
+      generatedRandomCharacters.push(randomCharacter);
+      // convert the array of genereatedRandomCharacters to a string
+      generatedRandomCharacters.join();
+      console.log(">>> generatedRandomCharacters >>>" , generatedRandomCharacters.join());
+    };
+  // End random generatePassword
 };
-
-generatePassword();
-
-// End random generatePassword
+// generatePassword();
 
 // Assignment code ends here
 
